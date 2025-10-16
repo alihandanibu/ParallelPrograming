@@ -151,3 +151,8 @@ All the work was done on Ubuntu Linux with GCC compiler. I installed various dev
 From this lab I learned how to measure real memory bandwidth, how to analyze computer hardware for parallel programming, why cache organization matters for performance, how to use performance profiling tools, and how to work with complex software tools and benchmarks.
 
 The repository has screenshots showing my installation steps, benchmark results, hardware analysis, and the roofline performance graph.
+## Screenshots
+
+![STREAM Benchmark Results](Screenshot%20from%202025-10-16%2015-22-15.png)
+![Hardware Topology](Screenshot%20from%202025-10-16%2015-25-28.png)
+![Roofline Performance Graph](Screenshot%20from%202025-10-16%2016-38-26.png)
