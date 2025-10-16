@@ -1,5 +1,4 @@
-# ParallelPrograming
-using this rep for assingments
+
 # ParallelPrograming
 using this rep for assingments
 assignment1 and 2 done 
