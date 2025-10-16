@@ -2,7 +2,7 @@
 using this rep for assingments
 # ParallelPrograming
 using this rep for assingments
-rator.  Stop.
+assignment1 and 2 done 
 
 student@itcenter-lab128:~/Desktop/parallel programing$ cat -A Makefile
 CC = gcc$
@@ -86,3 +86,74 @@ int main(int argc, char *argv[]) {
     
     return 0;
 }
+## Assignment 2: Performance Limits and Profiling
+
+In this lab I worked on understanding computer hardware performance and system architecture. Here's everything I did step by step:
+
+### Installation and Setup Process
+
+First I installed all the necessary tools and libraries. I downloaded and compiled everything from source:
+
+For Cairo graphics library:
+wget https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
+tar -xf cairo-1.16.0.tar.xz
+cd cairo-1.16.0
+./configure --with-x --prefix=/usr/local
+make
+sudo make install
+sudo ldconfig
+
+text
+
+For hwloc hardware discovery tools:
+git clone https://github.com/open-mpi/hwloc.git
+cd hwloc
+sudo apt install -y autoconf automake libtool
+./autogen.sh
+./configure --prefix=/usr/local --enable-cairo
+make
+sudo make install
+
+text
+
+The installation created multiple hwloc tools in /usr/local/bin/ including hwloc-info, hwloc-calc, lstopo, and others.
+
+### STREAM Benchmark - Memory Performance
+
+I compiled and ran the STREAM benchmark to measure real-world memory bandwidth:
+cd ~/parallel_programming/STREAM
+make
+./stream_c.exe
+
+text
+
+Got these memory speed results:
+- Copy: 14,754.7 MB/s
+- Scale: 10,049.7 MB/s
+- Add: 10,900.1 MB/s
+- Triad: 10,711.8 MB/s
+
+### Hardware Topology Analysis
+
+I used the hwloc tools to analyze my system architecture:
+lstopo --version
+lstopo
+
+text
+
+I examined the CPU cores, cache hierarchy, and processor layout. The tools showed me how L1, L2, and L3 caches are shared between cores and how the processor organization affects parallel program performance.
+
+### Technical Setup Details
+- Used Ubuntu Linux with GCC compiler
+- Installed development packages: build-essential, libcairo2-dev, libpng-dev, libx11-dev, libxext-dev
+- Configured all tools with proper dependencies
+- Successfully built everything from source code
+
+### What I Learned
+- How to measure actual memory bandwidth vs theoretical limits
+- How to analyze hardware architecture for optimizing parallel programs
+- Why cache hierarchy and core connections matter for performance
+- How to install and configure complex software tools from source
+- How memory bandwidth affects parallel application performance
+
+The repository includes screenshots of my installation process, benchmark results, and hardware analysis.
