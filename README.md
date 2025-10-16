@@ -86,14 +86,11 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 ## Assignment 2: Performance Limits and Profiling
+For this lab I worked on understanding computer hardware performance and system architecture. Here's what I did:
 
-In this lab I worked on understanding computer hardware performance and system architecture. Here's everything I did step by step:
+First I installed all the needed tools and libraries. I downloaded and compiled everything from source code.
 
-### Installation and Setup Process
-
-First I installed all the necessary tools and libraries. I downloaded and compiled everything from source:
-
-For Cairo graphics library:
+For the Cairo graphics library I used these commands:
 wget https://www.cairographics.org/releases/cairo-1.16.0.tar.xz
 tar -xf cairo-1.16.0.tar.xz
 cd cairo-1.16.0
@@ -102,9 +99,7 @@ make
 sudo make install
 sudo ldconfig
 
-text
-
-For hwloc hardware discovery tools:
+For the hwloc hardware discovery tools I did:
 git clone https://github.com/open-mpi/hwloc.git
 cd hwloc
 sudo apt install -y autoconf automake libtool
@@ -113,46 +108,46 @@ sudo apt install -y autoconf automake libtool
 make
 sudo make install
 
-text
+The installation set up multiple hwloc tools in /usr/local/bin/ like hwloc-info, hwloc-calc, lstopo, and others.
 
-The installation created multiple hwloc tools in /usr/local/bin/ including hwloc-info, hwloc-calc, lstopo, and others.
+I tested that hwloc worked:
+lstopo --version
+lstopo
 
-### STREAM Benchmark - Memory Performance
-
-I compiled and ran the STREAM benchmark to measure real-world memory bandwidth:
+Next I ran the STREAM benchmark to test memory bandwidth performance:
 cd ~/parallel_programming/STREAM
 make
 ./stream_c.exe
 
-text
+I got these memory speed results:
+Copy: 14,754.7 MB/s
+Scale: 10,049.7 MB/s
+Add: 10,900.1 MB/s
+Triad: 10,711.8 MB/s
 
-Got these memory speed results:
-- Copy: 14,754.7 MB/s
-- Scale: 10,049.7 MB/s
-- Add: 10,900.1 MB/s
-- Triad: 10,711.8 MB/s
+Then I set up the Roofline performance analysis tool:
+cd ~/ParallelPrograming
+git clone https://bitbucket.org/berkeleylab/cs-roofline-toolkit.git
+cd cs-roofline-toolkit/Empirical_Roofline_Tool-1.1.0
+cp Config/config.madonna.lbl.gov.01 Config/my_config
 
-### Hardware Topology Analysis
+I installed MPI support and configured the tool:
+sudo apt install -y libopenmpi-dev openmpi-bin
+nano Config/my_config
 
-I used the hwloc tools to analyze my system architecture:
-lstopo --version
-lstopo
+Then I ran the Roofline analysis:
+./ert Config/my_config
 
-text
+The tool completed successfully and generated these results:
+Empirical roofline graph: 'Results.my_computer/Run.002/roofline.ps'
+Empirical roofline database: 'Results.my_computer/Run.002/roofline.json'
 
-I examined the CPU cores, cache hierarchy, and processor layout. The tools showed me how L1, L2, and L3 caches are shared between cores and how the processor organization affects parallel program performance.
+I also installed additional profiling tools:
+sudo apt install -y kcachegrind valgrind
+git clone --recursive https://github.com/UK-MAC/CloverLeaf.git
 
-### Technical Setup Details
-- Used Ubuntu Linux with GCC compiler
-- Installed development packages: build-essential, libcairo2-dev, libpng-dev, libx11-dev, libxext-dev
-- Configured all tools with proper dependencies
-- Successfully built everything from source code
+All the work was done on Ubuntu Linux with GCC compiler. I installed various development packages and got all the tools configured properly.
 
-### What I Learned
-- How to measure actual memory bandwidth vs theoretical limits
-- How to analyze hardware architecture for optimizing parallel programs
-- Why cache hierarchy and core connections matter for performance
-- How to install and configure complex software tools from source
-- How memory bandwidth affects parallel application performance
+From this lab I learned how to measure real memory bandwidth, how to analyze computer hardware for parallel programming, why cache organization matters for performance, how to use performance profiling tools, and how to work with complex software tools and benchmarks.
 
-The repository includes screenshots of my installation process, benchmark results, and hardware analysis.
+The repository has screenshots showing my installation steps, benchmark results, hardware analysis, and the roofline performance graph.
