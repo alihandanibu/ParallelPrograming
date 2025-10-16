@@ -1,8 +1,6 @@
 # ParallelPrograming
 using this rep for assingments
-# ParallelPrograming
-using this rep for assingments
-rator.  Stop.
+
 
 student@itcenter-lab128:~/Desktop/parallel programing$ cat -A Makefile
 CC = gcc$
