@@ -114,3 +114,5 @@ int main(int argc, char *argv[]) {
 https://docs.google.com/spreadsheets/d/19_SwDsPGE6ehVOfDny4_Smb8yNcXmohxJWOXBZsPJuQ/edit?gid=0#gid=0
 
 *Charts show performance trends across different V values and data sizes*
+graph:
+![Performance Graph](Screenshot%20from%202025-10-23%2015-58-19.png)
