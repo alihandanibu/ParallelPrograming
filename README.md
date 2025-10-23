@@ -86,3 +86,31 @@ int main(int argc, char *argv[]) {
     
     return 0;
 }
+
+
+# AoSoA Performance Analysis - Parallel Programming Lab
+
+## Assignment Completion
+
+### Completed Tasks:
+- Implemented all required functions in `aosoa_measurement.cpp`
+- Tested AoSoA performance with different vector lengths (V=2 to 256)
+- Analyzed performance across various data sizes (1K to 100M elements)
+
+### Performance Results Analysis:
+
+**Key Findings:**
+- **Small datasets (1K-100K)**: Minimal performance difference between V values
+- **Large datasets (1M-100M)**: Larger V values (64-256) show significantly better performance
+- **Optimal V range**: 64-128 provides the best balance across all data sizes
+- **Performance improvement**: Up to 8% faster with optimal V values for large datasets
+
+### Cache Behavior Insights:
+- Larger V values better utilize 64-byte cache lines
+- For small datasets, all data fits in cache regardless of layout
+- For large datasets, cache efficiency becomes critical
+
+### Google Sheets with Charts:
+https://docs.google.com/spreadsheets/d/19_SwDsPGE6ehVOfDny4_Smb8yNcXmohxJWOXBZsPJuQ/edit?gid=0#gid=0
+
+*Charts show performance trends across different V values and data sizes*
