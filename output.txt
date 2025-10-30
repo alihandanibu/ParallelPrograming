@@ -1,0 +1,1717 @@
+Script started on 2025-10-30 15:23:14+01:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="117" LINES="13"]
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# Snimi stdout i stderr u fajl[27m
+[7mmake run > output.txt 2>&1[27m[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # Snimi stdout i stderr u fajl
+make run > output.txt 2>&1
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# Kreiraj CSV fajl[27m
+[7mecho "ArraySize,Method,AbsoluteDiff,RelativeDiff,RuntimeSeconds" > results.csv[27m
+
+[7m# Dodaj podatke (ručno kopiraj iz outputa)[27m[A[A[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # Kreiraj CSV fajl
+echo "ArraySize,Method,AbsoluteDiff,RelativeDiff,RuntimeSeconds" > results.csv
+
+# Dodaj podatke (ručno kopiraj iz outputa)
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# Prvo obriši stare fajlove[27m
+[7mmake clean[27m
+
+[7m# Onda ponovo buildaj[27m
+[7mmake rebuild[27m
+
+[7m# Pokreni testove[27m
+[7mmake run[27m[A[A[A[A[A[A[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # Prvo obriši stare fajlove
+make clean
+
+# Onda ponovo buildaj
+make rebuild
+
+# Pokreni testove
+make run
+[?2004lCleaning up...
+rm -f main.o sum_algorithms.o sum_test
+Clean complete!
+Cleaning up...
+rm -f main.o sum_algorithms.o sum_test
+Clean complete!
+Compiling main.c...
+gcc -Wall -std=c99 -c main.c -o main.o
+Compiling sum_algorithms.c...
+gcc -Wall -std=c99 -c sum_algorithms.c -o sum_algorithms.o
+Linking sum_test...
+gcc main.o sum_algorithms.o -lm -o sum_test
+./sum_test
+========================================
+GLOBAL SUM PROBLEM - PRECISION ANALYSIS
+Testing different summation algorithms
+========================================
+
+========================================
+TESTING WITH 2^10 = 1024 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 51.2000000512    
+
+  accurate sum 51.2000000512    
+  computed sum 51.20000005120137
+  absolute diff 1.3713e-12
+  relative diff 2.6784e-14
+  runtime 0.000003 seconds
+  Method: Standard double sum
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000011 seconds
+  Method: Pairwise summation
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000009 seconds
+  Method: Kahan summation
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000010 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 3.5527e-15
+  relative diff 6.9389e-17
+  runtime 0.000007 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^11 = 2048 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 102.4000001024   
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024003
+  absolute diff 2.8422e-13
+  relative diff 2.7756e-15
+  runtime 0.000006 seconds
+  Method: Standard double sum
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000020 seconds
+  Method: Pairwise summation
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000019 seconds
+  Method: Kahan summation
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000019 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 7.1054e-15
+  relative diff 6.9389e-17
+  runtime 0.000015 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^12 = 4096 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 204.8000002048   
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002047672
+  absolute diff -3.2799e-11
+  relative diff -1.6015e-13
+  runtime 0.000011 seconds
+  Method: Standard double sum
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000040 seconds
+  Method: Pairwise summation
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000038 seconds
+  Method: Kahan summation
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000038 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000026 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^13 = 8192 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 409.6000004096   
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004095737
+  absolute diff -2.6262e-11
+  relative diff -6.4115e-14
+  runtime 0.000023 seconds
+  Method: Standard double sum
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000078 seconds
+  Method: Pairwise summation
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000075 seconds
+  Method: Kahan summation
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000075 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096001
+  absolute diff 5.6843e-14
+  relative diff 1.3878e-16
+  runtime 0.000050 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^14 = 16384 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 819.2000008192   
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008196816
+  absolute diff 4.8158e-10
+  relative diff 5.8786e-13
+  runtime 0.000046 seconds
+  Method: Standard double sum
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000304 seconds
+  Method: Pairwise summation
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000158 seconds
+  Method: Kahan summation
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000158 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 2.8422e-14
+  relative diff 3.4694e-17
+  runtime 0.000080 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^15 = 32768 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 1638.4000016384  
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.400001638733
+  absolute diff 3.3310e-10
+  relative diff 2.0331e-13
+  runtime 0.000102 seconds
+  Method: Standard double sum
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000545 seconds
+  Method: Pairwise summation
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000320 seconds
+  Method: Kahan summation
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000331 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff -8.5265e-14
+  relative diff -5.2042e-17
+  runtime 0.000158 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^16 = 65536 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 3276.8000032768  
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.800003276371
+  absolute diff -4.2928e-10
+  relative diff -1.3101e-13
+  runtime 0.000216 seconds
+  Method: Standard double sum
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.001018 seconds
+  Method: Pairwise summation
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000634 seconds
+  Method: Kahan summation
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000657 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 3276.8000032768  
+  computed sum 3276.800003276801
+  absolute diff 1.0516e-12
+  relative diff 3.2092e-16
+  runtime 0.000341 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^17 = 131072 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 6553.6000065536  
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.600006562821
+  absolute diff 9.2214e-09
+  relative diff 1.4071e-12
+  runtime 0.000418 seconds
+  Method: Standard double sum
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002079 seconds
+  Method: Pairwise summation
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.001272 seconds
+  Method: Kahan summation
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002900 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 6553.6000065536  
+  computed sum 6553.600006553604
+  absolute diff 4.2348e-12
+  relative diff 6.4618e-16
+  runtime 0.000721 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^18 = 262144 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 13107.2000131072 
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.20001314317
+  absolute diff 3.5974e-08
+  relative diff 2.7446e-12
+  runtime 0.000924 seconds
+  Method: Standard double sum
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.004339 seconds
+  Method: Pairwise summation
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002864 seconds
+  Method: Kahan summation
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002610 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 13107.2000131072 
+  computed sum 13107.20001310719
+  absolute diff -1.1227e-11
+  relative diff -8.5652e-16
+  runtime 0.001470 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^19 = 524288 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 26214.4000262144 
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.40002564823
+  absolute diff -5.6617e-07
+  relative diff -2.1598e-11
+  runtime 0.002600 seconds
+  Method: Standard double sum
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.010723 seconds
+  Method: Pairwise summation
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.005182 seconds
+  Method: Kahan summation
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.005668 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 26214.4000262144 
+  computed sum 26214.40002621434
+  absolute diff -5.6701e-11
+  relative diff -2.1630e-15
+  runtime 0.002887 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^20 = 1048576 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 52428.8000524288 
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.80005292332
+  absolute diff 4.9452e-07
+  relative diff 9.4322e-12
+  runtime 0.003570 seconds
+  Method: Standard double sum
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.016795 seconds
+  Method: Pairwise summation
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.010877 seconds
+  Method: Kahan summation
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.011150 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 52428.8000524288 
+  computed sum 52428.80005242807
+  absolute diff -7.2973e-10
+  relative diff -1.3918e-14
+  runtime 0.005411 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^21 = 2097152 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 104857.6001048576
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001084272
+  absolute diff 3.5696e-06
+  relative diff 3.4042e-11
+  runtime 0.007192 seconds
+  Method: Standard double sum
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.038536 seconds
+  Method: Pairwise summation
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.020859 seconds
+  Method: Kahan summation
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.021120 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048604
+  absolute diff 2.8137e-09
+  relative diff 2.6833e-14
+  runtime 0.010652 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^22 = 4194304 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 209715.2002097152
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2001908246
+  absolute diff -1.8891e-05
+  relative diff -9.0077e-11
+  runtime 0.014368 seconds
+  Method: Standard double sum
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.081005 seconds
+  Method: Pairwise summation
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.042461 seconds
+  Method: Kahan summation
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.042422 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097158
+  absolute diff 5.8722e-10
+  relative diff 2.8001e-15
+  runtime 0.019331 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^23 = 8388608 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 419430.4004194304
+
+  accurate sum 419430.4004194304
+  computed sum 419430.400462431 
+  absolute diff 4.3001e-05
+  relative diff 1.0252e-10
+  runtime 0.027668 seconds
+  Method: Standard double sum
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.107999 seconds
+  Method: Pairwise summation
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.081086 seconds
+  Method: Kahan summation
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.083611 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 419430.4004194304
+  computed sum 419430.4004193632
+  absolute diff -6.7196e-08
+  relative diff -1.6021e-13
+  runtime 0.039695 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^24 = 16777216 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 838860.8008388608
+
+  accurate sum 838860.8008388608
+  computed sum 838860.800853056 
+  absolute diff 1.4195e-05
+  relative diff 1.6922e-11
+  runtime 0.056848 seconds
+  Method: Standard double sum
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.196481 seconds
+  Method: Pairwise summation
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.163334 seconds
+  Method: Kahan summation
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.159746 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 838860.8008388608
+  computed sum 838860.800838807 
+  absolute diff -5.3750e-08
+  relative diff -6.4075e-14
+  runtime 0.075938 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^25 = 33554432 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 1677721.601677722
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.600413603
+  absolute diff -1.2641e-03
+  relative diff -7.5347e-10
+  runtime 0.113191 seconds
+  Method: Standard double sum
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.387732 seconds
+  Method: Pairwise summation
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.322623 seconds
+  Method: Kahan summation
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.320797 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 1677721.601677722
+  computed sum 1677721.601678708
+  absolute diff 9.8642e-07
+  relative diff 5.8795e-13
+  runtime 0.204273 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^26 = 67108864 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 3355443.203355443
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.201976103
+  absolute diff -1.3793e-03
+  relative diff -4.1108e-10
+  runtime 0.213285 seconds
+  Method: Standard double sum
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.747553 seconds
+  Method: Pairwise summation
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.638053 seconds
+  Method: Kahan summation
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.637032 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 3355443.203355443
+  computed sum 3355443.203356126
+  absolute diff 6.8258e-07
+  relative diff 2.0342e-13
+  runtime 0.285333 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^27 = 134217728 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 6710886.406710886
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.393382353
+  absolute diff -1.3329e-02
+  relative diff -1.9861e-09
+  runtime 0.427133 seconds
+  Method: Standard double sum
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.509447 seconds
+  Method: Pairwise summation
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.277335 seconds
+  Method: Kahan summation
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.277720 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710008
+  absolute diff -8.7879e-07
+  relative diff -1.3095e-13
+  runtime 0.797537 seconds
+  Method: Long double precision
+
+========================================
+All tests complete!
+========================================
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# 1. Snimi novi output[27m
+[7mscript corrected_output.txt[27m
+[7mmake run[27m
+[7mexit[27m
+
+[7m# 2. Kopiraj sadržaj za GitHub[27m
+[7mcat corrected_output.txt[27m
+
+[7m# 3. Ažuriraj README.md sa napomenom o popravci[27m[A[A[A[A[A[A[A[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # 1. Snimi novi output
+script corrected_output.txt
+make run
+exit
+
+# 2. Kopiraj sadržaj za GitHub
+cat corrected_output.txt
+
+# 3. Ažuriraj README.md sa napomenom o popravci
+[?2004lScript started, output log file is 'corrected_output.txt'.
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ ^[[200~# Pokreni snimanje
+[?2004lxt
+
+# Sada pokreni test - VIDIĆEŠ SVE KAKO IZLAZI U TERMINALU
+make run
+
+# KADA PROGRAM ZAVRŠI, unesi exit da završiš snimanje
+exit^[[201~[200~#: command not found
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ script corrected_output.txt
+[?2004lScript started, output log file is 'corrected_output.txt'.
+
+# Sada pokreni test - VIDIĆEŠ SVE KAKO IZLAZI U TERMINALU
+make run
+
+# KADA PROGRAM ZAVRŠI, unesi exit da završiš snimanje
+exit^[[201~[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ 
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # Sada pokreni test - VIDIĆEŠ SVE KAKO IZLAZI U TERMINALU
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ make run
+[?2004l./sum_test
+========================================
+GLOBAL SUM PROBLEM - PRECISION ANALYSIS
+Testing different summation algorithms
+========================================
+
+========================================
+TESTING WITH 2^10 = 1024 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 51.2000000512    
+
+  accurate sum 51.2000000512    
+  computed sum 51.20000005120137
+  absolute diff 1.3713e-12
+  relative diff 2.6784e-14
+  runtime 0.000003 seconds
+  Method: Standard double sum
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000017 seconds
+  Method: Pairwise summation
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000010 seconds
+  Method: Kahan summation
+
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000010 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 51.2000000512    
+  computed sum 51.2000000512    
+  absolute diff 3.5527e-15
+  relative diff 6.9389e-17
+  runtime 0.000005 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^11 = 2048 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 102.4000001024   
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024003
+  absolute diff 2.8422e-13
+  relative diff 2.7756e-15
+  runtime 0.000006 seconds
+  Method: Standard double sum
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000049 seconds
+  Method: Pairwise summation
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000020 seconds
+  Method: Kahan summation
+
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000019 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 102.4000001024   
+  computed sum 102.4000001024   
+  absolute diff 7.1054e-15
+  relative diff 6.9389e-17
+  runtime 0.000010 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^12 = 4096 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 204.8000002048   
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002047672
+  absolute diff -3.2799e-11
+  relative diff -1.6015e-13
+  runtime 0.000030 seconds
+  Method: Standard double sum
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000067 seconds
+  Method: Pairwise summation
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000039 seconds
+  Method: Kahan summation
+
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000040 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 204.8000002048   
+  computed sum 204.8000002048   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000019 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^13 = 8192 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 409.6000004096   
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004095737
+  absolute diff -2.6262e-11
+  relative diff -6.4115e-14
+  runtime 0.000024 seconds
+  Method: Standard double sum
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000124 seconds
+  Method: Pairwise summation
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000080 seconds
+  Method: Kahan summation
+
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000100 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 409.6000004096   
+  computed sum 409.6000004096001
+  absolute diff 5.6843e-14
+  relative diff 1.3878e-16
+  runtime 0.000040 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^14 = 16384 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 819.2000008192   
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008196816
+  absolute diff 4.8158e-10
+  relative diff 5.8786e-13
+  runtime 0.000050 seconds
+  Method: Standard double sum
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000366 seconds
+  Method: Pairwise summation
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000162 seconds
+  Method: Kahan summation
+
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000205 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 819.2000008192   
+  computed sum 819.2000008192   
+  absolute diff 2.8422e-14
+  relative diff 3.4694e-17
+  runtime 0.000082 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^15 = 32768 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 1638.4000016384  
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.400001638733
+  absolute diff 3.3310e-10
+  relative diff 2.0331e-13
+  runtime 0.000110 seconds
+  Method: Standard double sum
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000513 seconds
+  Method: Pairwise summation
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000406 seconds
+  Method: Kahan summation
+
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000369 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 1638.4000016384  
+  computed sum 1638.4000016384  
+  absolute diff -8.5265e-14
+  relative diff -5.2042e-17
+  runtime 0.000158 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^16 = 65536 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 3276.8000032768  
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.800003276371
+  absolute diff -4.2928e-10
+  relative diff -1.3101e-13
+  runtime 0.000207 seconds
+  Method: Standard double sum
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.001023 seconds
+  Method: Pairwise summation
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000693 seconds
+  Method: Kahan summation
+
+  accurate sum 3276.8000032768  
+  computed sum 3276.8000032768  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.000677 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 3276.8000032768  
+  computed sum 3276.800003276801
+  absolute diff 1.0516e-12
+  relative diff 3.2092e-16
+  runtime 0.000414 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^17 = 131072 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 6553.6000065536  
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.600006562821
+  absolute diff 9.2214e-09
+  relative diff 1.4071e-12
+  runtime 0.000625 seconds
+  Method: Standard double sum
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002413 seconds
+  Method: Pairwise summation
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.001488 seconds
+  Method: Kahan summation
+
+  accurate sum 6553.6000065536  
+  computed sum 6553.6000065536  
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.001351 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 6553.6000065536  
+  computed sum 6553.600006553604
+  absolute diff 4.2348e-12
+  relative diff 6.4618e-16
+  runtime 0.000741 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^18 = 262144 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 13107.2000131072 
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.20001314317
+  absolute diff 3.5974e-08
+  relative diff 2.7446e-12
+  runtime 0.001537 seconds
+  Method: Standard double sum
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.005265 seconds
+  Method: Pairwise summation
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002771 seconds
+  Method: Kahan summation
+
+  accurate sum 13107.2000131072 
+  computed sum 13107.2000131072 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.002864 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 13107.2000131072 
+  computed sum 13107.20001310719
+  absolute diff -1.1227e-11
+  relative diff -8.5652e-16
+  runtime 0.001729 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^19 = 524288 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 26214.4000262144 
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.40002564823
+  absolute diff -5.6617e-07
+  relative diff -2.1598e-11
+  runtime 0.002132 seconds
+  Method: Standard double sum
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.006181 seconds
+  Method: Pairwise summation
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.005214 seconds
+  Method: Kahan summation
+
+  accurate sum 26214.4000262144 
+  computed sum 26214.4000262144 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.005646 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 26214.4000262144 
+  computed sum 26214.40002621434
+  absolute diff -5.6701e-11
+  relative diff -2.1630e-15
+  runtime 0.002624 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^20 = 1048576 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 52428.8000524288 
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.80005292332
+  absolute diff 4.9452e-07
+  relative diff 9.4322e-12
+  runtime 0.003310 seconds
+  Method: Standard double sum
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.015646 seconds
+  Method: Pairwise summation
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.012033 seconds
+  Method: Kahan summation
+
+  accurate sum 52428.8000524288 
+  computed sum 52428.8000524288 
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.011699 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 52428.8000524288 
+  computed sum 52428.80005242807
+  absolute diff -7.2973e-10
+  relative diff -1.3918e-14
+  runtime 0.006595 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^21 = 2097152 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 104857.6001048576
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001084272
+  absolute diff 3.5696e-06
+  relative diff 3.4042e-11
+  runtime 0.007957 seconds
+  Method: Standard double sum
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.040285 seconds
+  Method: Pairwise summation
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.021997 seconds
+  Method: Kahan summation
+
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048576
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.021505 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 104857.6001048576
+  computed sum 104857.6001048604
+  absolute diff 2.8137e-09
+  relative diff 2.6833e-14
+  runtime 0.008387 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^22 = 4194304 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 209715.2002097152
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2001908246
+  absolute diff -1.8891e-05
+  relative diff -9.0077e-11
+  runtime 0.016504 seconds
+  Method: Standard double sum
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.062984 seconds
+  Method: Pairwise summation
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.040166 seconds
+  Method: Kahan summation
+
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097152
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.040777 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 209715.2002097152
+  computed sum 209715.2002097158
+  absolute diff 5.8722e-10
+  relative diff 2.8001e-15
+  runtime 0.025788 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^23 = 8388608 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 419430.4004194304
+
+  accurate sum 419430.4004194304
+  computed sum 419430.400462431 
+  absolute diff 4.3001e-05
+  relative diff 1.0252e-10
+  runtime 0.030240 seconds
+  Method: Standard double sum
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.101060 seconds
+  Method: Pairwise summation
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.080070 seconds
+  Method: Kahan summation
+
+  accurate sum 419430.4004194304
+  computed sum 419430.4004194304
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.080054 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 419430.4004194304
+  computed sum 419430.4004193632
+  absolute diff -6.7196e-08
+  relative diff -1.6021e-13
+  runtime 0.036963 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^24 = 16777216 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 838860.8008388608
+
+  accurate sum 838860.8008388608
+  computed sum 838860.800853056 
+  absolute diff 1.4195e-05
+  relative diff 1.6922e-11
+  runtime 0.055898 seconds
+  Method: Standard double sum
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.199226 seconds
+  Method: Pairwise summation
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.159501 seconds
+  Method: Kahan summation
+
+  accurate sum 838860.8008388608
+  computed sum 838860.8008388608
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.159735 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 838860.8008388608
+  computed sum 838860.800838807 
+  absolute diff -5.3750e-08
+  relative diff -6.4075e-14
+  runtime 0.101382 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^25 = 33554432 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 1677721.601677722
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.600413603
+  absolute diff -1.2641e-03
+  relative diff -7.5347e-10
+  runtime 0.108676 seconds
+  Method: Standard double sum
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.404723 seconds
+  Method: Pairwise summation
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.317658 seconds
+  Method: Kahan summation
+
+  accurate sum 1677721.601677722
+  computed sum 1677721.601677722
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.319785 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 1677721.601677722
+  computed sum 1677721.601678708
+  absolute diff 9.8642e-07
+  relative diff 5.8795e-13
+  runtime 0.207815 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^26 = 67108864 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 3355443.203355443
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.201976103
+  absolute diff -1.3793e-03
+  relative diff -4.1108e-10
+  runtime 0.250203 seconds
+  Method: Standard double sum
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.853213 seconds
+  Method: Pairwise summation
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.643459 seconds
+  Method: Kahan summation
+
+  accurate sum 3355443.203355443
+  computed sum 3355443.203355443
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 0.634572 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 3355443.203355443
+  computed sum 3355443.203356126
+  absolute diff 6.8258e-07
+  relative diff 2.0342e-13
+  runtime 0.410646 seconds
+  Method: Long double precision
+
+========================================
+TESTING WITH 2^27 = 134217728 elements
+========================================
+Initializing array (Leblanc problem: high values first, then low values)
+Expected accurate sum: 6710886.406710886
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.393382353
+  absolute diff -1.3329e-02
+  relative diff -1.9861e-09
+  runtime 0.430103 seconds
+  Method: Standard double sum
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.527826 seconds
+  Method: Pairwise summation
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.270283 seconds
+  Method: Kahan summation
+
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710886
+  absolute diff 0.0000e+00
+  relative diff 0.0000e+00
+  runtime 1.314371 seconds
+  Method: Knuth summation
+
+  LONG DOUBLE PRECISION:
+  accurate sum 6710886.406710886
+  computed sum 6710886.406710008
+  absolute diff -8.7879e-07
+  relative diff -1.3095e-13
+  runtime 0.600618 seconds
+  Method: Long double precision
+
+========================================
+All tests complete!
+========================================
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ 
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # KADA PROGRAM ZAVRŠI, unesi exit da završiš snimanje
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ exit~[K
+[?2004lexit
+Script done.
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ clear terminal
+[?2004lUsage: clear [options]
+
+Options:
+  -T TERM     use this instead of $TERM
+  -V          print curses-version
+  -x          do not try to clear scrollback
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ ^[[200~# Preimenuj fajl da nema razmake (koristi donju crtu)
+[?2004lbash: syntax error near unexpected token `('
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ mv "Screenshot from 2025-10-30 15-27-54.png" Screenshot_2025-10-30_15-27-54.png~
+[?2004lmv: cannot stat 'Screenshot from 2025-10-30 15-27-54.png': No such file or directory
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# Preimenuj fajl da nema razmake (koristi donju crtu)[27m
+[7mmv "Screenshot from 2025-10-30 15-27-54.png" Screenshot_2025-10-30_15-27-54.png[27m[A# Preimenuj fajl da nema razmake (koristi donju crtu)
+mv "Screenshot from 2025-10-30 15-27-54.png" Screenshot_2025-10-30_15-27-54.png
+[?2004lmv: cannot stat 'Screenshot from 2025-10-30 15-27-54.png': No such file or directory
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7m# Traži screenshot fajl[27m
+[7mfind ~ -name "*Screenshot*" -type f 2>/dev/null[27m
+
+[7m# Ili traži po Downloads folderu[27m
+[7mls ~/Downloads/[27m
+
+[7m# Ili traži po Desktopu[27m
+[7mls ~/Desktop/[27m[A[A[A[A[A[A[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ # Traži screenshot fajl
+find ~ -name "*Screenshot*" -type f 2>/dev/null
+
+# Ili traži po Downloads folderu
+ls ~/Downloads/
+
+# Ili traži po Desktopu
+ls ~/Desktop/
+[?2004l/home/student/.local/share/Trash/info/Screenshot from 2025-10-16 15-40-40.png.trashinfo
+/home/student/.local/share/Trash/files/Screenshot from 2025-10-16 15-40-40.png
+/home/student/ParallelPrograming/Screenshot from 2025-10-16 15-22-15.png
+/home/student/ParallelPrograming/Screenshot from 2025-10-16 15-25-28.png
+/home/student/Pictures/Screenshots/Screenshot from 2022-11-10 13-17-48.png
+/home/student/Pictures/Screenshots/Screenshot from 2022-10-25 13-36-30.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-23 15-58-19.png
+/home/student/Pictures/Screenshots/Screenshot from 2022-10-20 12-09-29.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-16 15-22-15.png
+/home/student/Pictures/Screenshots/Screenshot from 2023-10-19 11-11-24.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-16 15-25-28.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-16 15-41-38.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-30 15-27-54.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-30 15-27-47.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-23 15-53-35.png
+/home/student/Pictures/Screenshots/Screenshot from 2025-10-16 16-38-26.png
+ [0m[01;35m23168-glass-coffee-light-cafe-4k.jpg[0m      'Lab Data Runs (1).xlsx'
+ [01;31mAmmarudinKovacevic2.zip[0m                   'Lab Data Runs.xlsx'
+ Anaconda3-2023.09-0-Linux-x86_64.sh        lab_exam_capture_2.pcapng
+ [01;35mandroid_logo.png[0m                           [01;31mlab-exam-sakilla.zip[0m
+ [01;35mcafe_de_luna_by_soeurise_dd7j67x-pre.jpg[0m   [01;35mlondon.jpg[0m
+'Copy of Lab Data Runs Ali Handan.xlsx'     [01;35mlos-angeles.jpg[0m
+'customersnohead(1).mat'                    [01;34m__MACOSX[0m
+ customersnohead.mat                        [01;35mmao.jpg[0m
+ damirtodic.sql                            'Mars Pathfinder Concurrency Issue.pdf'
+ [01;31mdbeaver-ce_24.0.0_amd64.deb[0m                midterm1.seb
+ [01;31mdrive-download-20230526T090554Z-001.zip[0m    [01;35mmostar.jpg[0m
+ [01;31mdrive-download-20230526T090653Z-001.zip[0m    mysqlsampledatabase.sql
+ [01;34mdskod[0m                                      [01;31mmysqlsampledatabase.zip[0m
+ [01;31mdskod.zip[0m                                  [01;35mprivate-space-wallpaperflare-com-wallpaper-3.jpg[0m
+[01;35m'File Joseph_Stalin,_1950_(cropped).jpg'[0m    [01;35msan-francisco.jpg[0m
+'Game Concept Design.docx'                  saninLabExam.pkt
+ Git-2.44.0-64-bit.exe                      [01;35msarajevo.jpg[0m
+ [01;35mistanbul.jpg[0m                               SEB_3.4.1.505_SetupBundle.exe
+ [01;35mistockphoto-1211547141-612x612.jpg[0m         [01;34msecond-group[0m
+[01;35m'Joseph_Stalin,_1950_(cropped).jpg'[0m         [01;31msecond-group.zip[0m
+'[LAB 1] - Course Introduction .pptx'       [01;35mUntitled.jpeg[0m
+ lab8.m                                     Wireshark-4.4.5-x64.exe
+'01. MIDTERM - Second Group.pdf'                        meals.sql
+ [0m[01;35m3-s2.0-B9780750677592500107-f08-28-9780750677592.jpg[0m   mysqlsampledatabase.sql
+ damirtodic.sql                                         [01;31mmysqlsampledatabase.zip[0m
+'DD&I - 2023_24 - First Final Exam.pdf'                [01;34m'New Folder'[0m
+ dependencies.txt                                      [01;34m'New Folder 2'[0m
+ [01;34mexam[0m                                                  [01;34m'New Folder 3'[0m
+ [01;32mfinal.zip[0m                                             [01;34m'New Folder 4'[0m
+ [01;34mfirst-group[0m                                            [01;32mPacket_Tracer821_amd64_signed.deb[0m
+ [01;32mfirst-group.zip[0m                                       [01;34m'parallel programing'[0m
+ [01;34mFoundations-of-Frontend-Web-Development[0m               [01;34m'parallel programing week4'[0m
+ hello.c                                               [01;34m'parallel week5'[0m
+ [01;34mKerimBesic[0m                                             parameter
+ lab3_task1.mwb.bak                                     parameter.c
+ lab3_task2.mwb.bak                                     [01;34mprviprogram[0m
+ lab3_task3.mwb                                         [01;34msakila-db[0m
+ lab3_task3.mwb.bak                                     saninLabExam.pkt
+ [01;34mlaba[0m                                                  [01;32m'Studio 3T.desktop'[0m
+'LAB EXAM 2022 - DD&I.pdf'                              [01;32mstudio-3t-linux-x64.sh[0m
+ [01;35mlab_exam.png[0m                                          [01;34m'web design'[0m
+ [01;34m__MACOSX[0m
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [K]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ ^C[?2004l[?2004h[?2004l
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7mmv "Screenshot from 2025-10-30 15-27-54.png" Screenshot_2025-10-30_[27m[7m1[27m[7m5-27-54.png[27m[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ mv "Screenshot from 2025-10-30 15-27-54.png" Screenshot_2025-10-30_15-27-54.png
+[?2004l[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ ^[[200~git status~
+[?2004l[200~git: command not found
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7mgit status[27mgit status
+[?2004lfatal: not a git repository (or any of the parent directories): .git
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7mgit init[27mgit init
+[?2004l[33mhint: Using 'master' as the name for the initial branch. This default branch name[m
+[33mhint: is subject to change. To configure the initial branch name to use in all[m
+[33mhint: of your new repositories, which will suppress this warning, call:[m
+[33mhint: [m
+[33mhint: 	git config --global init.defaultBranch <name>[m
+[33mhint: [m
+[33mhint: Names commonly chosen instead of 'master' are 'main', 'trunk' and[m
+[33mhint: 'development'. The just-created branch can be renamed via this command:[m
+[33mhint: [m
+[33mhint: 	git branch -m <name>[m
+Initialized empty Git repository in /home/student/Desktop/parallel week5/.git/
+[?2004h]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ [7mgit remote add origin https://github.com/alihandanibu/ParallelProgr[27m[7ma[27m[7mming.git[27m[A]0;student@itcenter-lab128: ~/Desktop/parallel week5[01;32mstudent@itcenter-lab128[00m:[01;34m~/Desktop/parallel week5[00m$ git remote ad
