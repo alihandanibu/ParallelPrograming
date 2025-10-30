@@ -1,6 +1,4 @@
-Da, savršeno! Kopiraj ovaj README.md tekst u VS Code i pushaj na GitHub. Evo finalnog README.md koji je spreman za kopiranje:
 
-```markdown
 # Global Sum Problem - Parallel Programming Assignment
 
 ## Project Overview
