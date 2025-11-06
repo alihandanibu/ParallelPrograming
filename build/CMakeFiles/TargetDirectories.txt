@@ -1,0 +1,6 @@
+/home/student/Desktop/week6 parallel/build/CMakeFiles/timestep_opt1.dir
+/home/student/Desktop/week6 parallel/build/CMakeFiles/timestep_opt2.dir
+/home/student/Desktop/week6 parallel/build/CMakeFiles/timestep_opt3.dir
+/home/student/Desktop/week6 parallel/build/CMakeFiles/distclean.dir
+/home/student/Desktop/week6 parallel/build/CMakeFiles/edit_cache.dir
+/home/student/Desktop/week6 parallel/build/CMakeFiles/rebuild_cache.dir
