@@ -19,6 +19,7 @@ int main(int argc, char *argv[]){
 
     struct timespec tstart;
     double time_sum = 0.0;
+#pragma omp parallel for
     for (int i=0; i<ARRAY_SIZE; i++) {
         a[i] = 1.0;
         b[i] = 2.0;
