@@ -1,0 +1,41 @@
+=== Running stencil_base ===
+Running with 4 thread(s)
+Iter 0
+Iter 100
+Iter 200
+Iter 300
+Iter 400
+Iter 500
+Iter 600
+Iter 700
+Iter 800
+Iter 900
+Total time: 10.768037 seconds
+
+=== Running stencil_opt4 ===
+Running with 4 thread(s)
+Iter 0
+Iter 100
+Iter 200
+Iter 300
+Iter 400
+Iter 500
+Iter 600
+Iter 700
+Iter 800
+Iter 900
+Timing: init 0.024783 flush 7.791405 stencil 10.381314 total 18.612823
+
+=== Running stencil_opt6 ===
+Running with 4 thread(s)
+Iter 0
+Iter 100
+Iter 200
+Iter 300
+Iter 400
+Iter 500
+Iter 600
+Iter 700
+Iter 800
+Iter 900
+Timing: init 0.021853 flush 7.775774 stencil 10.205437 total 18.251683
