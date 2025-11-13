@@ -57,4 +57,36 @@ Timing: init 0.021853 flush 7.775774 stencil 10.205437 total 18.251683
 - stencil_opt6 has best performance among optimized versions
 - First-touch policy helps with memory speed
 
-The optimizations show how proper memory management and barrier control can improve parallel performance.
+
+### Answers to Questions:
+
+#### 1. How many threads your CPU used to execute the code?
+- My CPU has 4 threads (I checked with nproc command)
+- All three programs used 4 threads for running in parallel
+- You can see in the output it says "Running with 4 thread(s)"
+
+#### 2. What are the parts of the code that were improved? What strategies were used?
+- **Memory setup** - we made it run in parallel so memory gets placed better
+- **Synchronization** - removed unnecessary waiting between threads
+- **Thread management** - used smarter ways to organize the work
+
+- **What we changed:**
+  - Made memory initialization run on all threads (first-touch)
+  - Used "nowait" to skip unnecessary barriers
+  - Kept threads running instead of starting/stopping them
+  - Manually split work between threads for better balance
+  - Only added barriers when threads really need to sync up
+
+#### 3. What is the difference between explicit and implicit barriers?
+- **Implicit barriers** - OpenMP automatically adds them at end of parallel sections
+  - Found in the basic version (stencil_base.c)
+  - Makes threads wait even when they don't need to
+
+- **Explicit barriers** - We manually add them with #pragma omp barrier
+  - Used in the optimized version (stencil_opt6.c)
+  - Only used when threads actually need to sync up
+
+- **What this means:** Barriers are like waiting points where all threads must arrive before anyone continues. Implicit barriers are automatic but can slow things down, while explicit barriers let us control when threads need to wait.
+
+### Terminal Screenshot:
+![Performance Results](Screenshot.png)
