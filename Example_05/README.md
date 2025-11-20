@@ -97,3 +97,10 @@ MPI functions used:
 Expected result for an array 1..10000:
 Total sum = 50005000
 
+
+![1-core run](screenshots/week8-1.png)
+![2-core run](screenshots/week8-2.png)
+![4-core run](screenshots/week8-3.png)
+![8-core run](screenshots/week8-4.png)
+![extra run](screenshots/week8-5.png)
+
