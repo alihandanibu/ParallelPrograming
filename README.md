@@ -209,20 +209,7 @@ This implementation follows the course structure, extends the original example w
 and provides detailed analysis using real-world measurements.
 # Screenshots – Execution Results
 
-### 1 Process
-![1 Process](screenshots/week8-1.png)
-
-### 2 Processes
-![2 Processes](screenshots/week8-2.png)
-
-### 4 Processes
-![4 Processes](screenshots/week8-3.png)
-
-### 8 Processes
-![8 Processes](screenshots/week8-4.png)
-
-### Additional runs
-![Run 5](screenshots/week8-5.png) test
+IN EXAMPLE05 FILE
 
 
 Author
