@@ -1,8 +1,6 @@
+
 # ParallelPrograming
-using this rep for assingments
-# ParallelPrograming
-using this rep for assingments
-rator.  Stop.
+
 
 student@itcenter-lab128:~/Desktop/parallel programing$ cat -A Makefile
 CC = gcc$
@@ -86,3 +84,148 @@ int main(int argc, char *argv[]) {
     
     return 0;
 }
+
+
+# Week 8# Example_05 – MPI Partial Sum using Scatter/Reduce with Timing Analysis
+
+This project implements a parallel partial-sum computation using **MPI (Message Passing Interface)**.  
+The program distributes an array of 10,000 elements across multiple processes, computes local partial sums,  
+and then aggregates the final result using `MPI_Reduce`.  
+
+To evaluate performance, the execution time of:
+- Data distribution (`MPI_Scatter`)
+- Local computation on each rank
+- Result aggregation (`MPI_Reduce`)
+
+was measured across multiple process counts (1, 2, 4, 8 processes).
+
+All tests were executed in **WSL2 (Ubuntu 24.04) using MPICH**, and the results reflect real runtime behavior on multi-core hardware.
+
+## **Project Structure**
+
+Example_05/
+│── PartialSum.c # Main MPI implementation
+│── timer.c # Timing utility
+│── timer.h
+│── Makefile # Build instructions
+└── PartialSum # Compiled executable (after make)
+
+## **Building the Project**
+
+Inside the Example_05 directory:
+cd Example_05
+make
+This generates the executable:
+
+./PartialSum
+Running the Program
+1 Process
+
+mpirun -n 1 ./PartialSum
+2 Processes
+
+mpirun -n 2 ./PartialSum
+4 Processes
+
+mpirun -n 4 ./PartialSum
+8 Processes
+
+mpirun -n 8 ./PartialSum
+Performance Results
+Below are the real execution results obtained during testing.
+
+1 Process
+
+Scatter: 0.001308 s
+Reduce:  0.001396 s
+Final sum: 50005000
+2 Processes
+
+Run 1:
+Scatter: 0.000141 s
+Reduce:  0.000007 s
+
+Run 2:
+Scatter: 0.000041 s
+Reduce:  0.000004 s
+4 Processes
+
+Run 1:
+Scatter: 0.000121 s
+Reduce:  0.000025 s
+
+Run 2:
+Scatter: 0.000057 s
+Reduce:  0.000006 s
+
+Run 3:
+Scatter: 0.000038 s
+Reduce:  0.000004 s
+
+Run 4:
+Scatter: 0.000052 s
+Reduce:  0.000005 s
+8 Processes
+
+Run 1:
+Scatter: 0.000086 s
+Reduce:  0.000006 s
+
+Run 2:
+Scatter: 0.000044 s
+Reduce:  0.000005 s
+
+Run 3:
+Scatter: 0.000085 s
+Reduce:  0.000006 s
+
+Run 4:
+Scatter: 0.000050 s
+Reduce:  0.000006 s
+
+Run 5:
+Scatter: 0.000050 s
+Reduce:  0.000005 s
+
+Run 6:
+Scatter: 0.000046 s
+Reduce:  0.000005 s
+
+Run 7:
+Scatter: 0.000047 s
+Reduce:  0.000004 s
+
+Run 8:
+Scatter: 0.000053 s
+Reduce:  0.000003 s
+
+Conclusion
+As the number of processes increases:
+MPI_Scatter time decreases significantly, due to better distribution across more ranks.
+MPI_Reduce time also becomes faster, since more processes contribute smaller partial sums.
+All executions produced the correct final sum: 50,005,000, confirming correctness of the implementation.
+The results clearly show the benefit of parallelism and proper workload distribution in MPI applications.
+This implementation follows the course structure, extends the original example with timing instrumentation,
+and provides detailed analysis using real-world measurements.
+# Screenshots – Execution Results
+
+### 1 Process
+![1 Process](screenshots/week8-1.png)
+
+### 2 Processes
+![2 Processes](screenshots/week8-2.png)
+
+### 4 Processes
+![4 Processes](screenshots/week8-3.png)
+
+### 8 Processes
+![8 Processes](screenshots/week8-4.png)
+
+### Additional runs
+![Run 5](screenshots/week8-5.png)
+
+
+Author
+Parallel Computing – Week 8 Assignment
+Ali Handan
+International Burch University
