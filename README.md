@@ -1,88 +1,129 @@
-# ParallelPrograming
-using this rep for assingments
-# ParallelPrograming
-using this rep for assingments
-rator.  Stop.
+**Parallel Computing – Week 10
 
-student@itcenter-lab128:~/Desktop/parallel programing$ cat -A Makefile
-CC = gcc$
-CFLAGS = -Wall -Wextra -g -std=c99$
-TARGET = memory_demo$
-SOURCE = main.c$
-$
-all: $(TARGET)$
-$
-$(TARGET): $(SOURCE)$
-    $(CC) $(CFLAGS) -o $(TARGET) $(SOURCE)$
-$
-valgrind: $(TARGET)$
-    valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(TARGET)$
-$
-valgrind-simple: $(TARGET)$
-    valgrind --tool=memcheck --leak-check=yes ./$(TARGET)$
-$
-clean:$
-    rm -f $(TARGET)$
-$
-.PHONY: all debug valgrind valgrind-simple clean$
+CUDA, OpenCL, OpenMP, OpenACC, and GPU Server Execution**
 
-student@itcenter-lab128:~/Desktop/parallel programing$ ^C
-student@itcenter-lab128:~/Desktop/parallel programing$ gcc -Wall -Wextra -g -std=c99 -o memory_demo main.c
-student@itcenter-lab128:~/Desktop/parallel programing$ valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./memory_demo 10
-==10059== Memcheck, a memory error detector
-==10059== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==10059== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==10059== Command: ./memory_demo 10
-==10059== 
-Value 10 not found in array.
-==10059== 
-==10059== HEAP SUMMARY:
-==10059==     in use at exit: 0 bytes in 0 blocks
-==10059==   total heap usage: 2 allocs, 2 frees, 1,064 bytes allocated
-==10059== 
-==10059== All heap blocks were freed -- no leaks are possible
-==10059== 
-==10059== For lists of detected and suppressed errors, rerun with: -s
-==10059== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0) this is when i fixed bugs.
-first step is checking for memory is allocated.  for (int i = 0; i <= n; i++) {   // <= n is wrong, should be < n
-        arr[i] = i * 10;
-    }
-this is failed because we have space for 10 elemns by this sintax 11 items are used beacuse it is used = sign so i rewrite it to i<10. that is solution for 2. probllem. 
-    free(iarray);
-     and solution is so obvious for the last task we use to free space that is allocated. here i provide full snippet of code:
-     #include <stdlib.h>
-#include <stdio.h>
+This repository documents all practical work performed in Week 10 of the Parallel Computing course. It covers local experimentation with CUDA, OpenMP, OpenACC, and OpenCL, followed by remote deployment and execution on the department’s GPU server.
 
-int main(int argc, char *argv[]) {
-    int ipos = 1, ival;
-    int *iarray = (int *) malloc(10 * sizeof(int));
-    
-    if (iarray == NULL) {
-        printf("Memory allocation failed!\n");
-        return 1;
-    }
-    
-    if (argc == 2) {
-        ival = atoi(argv[1]);
-    }
+The goal of this work is to validate different parallel programming models, compare performance characteristics, and understand real GPU offloading workflows.
 
-    for (int i = 0; i < 10; i++) {
-        iarray[i] = ipos;
-    }
+1. CUDA Execution (Local Machine)
 
-    for (int i = 0; i < 10; i++) {
-        if (ival == iarray[i]) {
-            ipos = i;
-        }
-    }
+The StreamTriad CUDA implementation was compiled and executed locally using nvcc.
 
-    if (ipos != 1) {
-        printf("Found ival at index %d\n", ipos);
-    } else {
-        printf("Value %d not found in array.\n", ival);
-    }
+nvcc StreamTriad.cu -o StreamTriad
 
-    free(iarray);
-    
-    return 0;
-}
+./StreamTriad
+./screenshots/cuda_output.png
+
+2. OpenCL Execution (Local Machine)
+
+The OpenCL version of StreamTriad attempted to initialize an OpenCL device.
+Since no compatible OpenCL platform was detected on the local machine, the expected error occurred:
+EZCL_DEVTYPE_INIT: Error with clGetDeviceIDs at line 34
+This confirms the environment does not support OpenCL GPU runtime.
+
+Screenshot:
+./screenshots/opencl_error.png
+
+3. OpenACC Execution (GCC Fallback)
+
+GCC supports the OpenACC syntax but does not include a GPU backend by default.
+Therefore, execution falls back to CPU mode.
+
+Command:
+gcc -fopenacc StreamTriad.c timer.c -o acc_exec
+./acc_exec
+
+Average runtime for stream triad loop is ~0.084 seconds
+Screenshot:
+./screenshots/openacc_output.png
+
+4. OpenMP Execution (CPU / NVPTX Fallback)
+
+The NVPTX offload target is present in GCC, but offload support is incomplete on the lab’s local machines.
+As a result, OpenMP code falls back to CPU execution.
+
+Command:
+gcc -fopenmp -foffload=nvptx-none StreamTriad.c timer.c -o omp_exec
+./omp_exec
+
+verage runtime for stream triad loop is ~0.085 ms
+
+Screenshot:
+./screenshots/openmp_output.png
+
+5. Transferring Files to the GPU Server
+
+To perform real GPU execution, source files were copied to the remote GPU server via SCP.
+
+Command:
+scp StreamTriad.c timer.c gpulab@10.1.8.100:~
+
+Successful transfer confirms readiness for GPU compilation.
+
+Screenshot:
+./screenshots/scp_transfer.png
+
+6. GPU Server Verification (RTX 2060)
+
+Upon connecting to the server:
+ssh gpulab@10.1.8.100
+nvidia-smi
+
+The server reports:
+
+NVIDIA GeForce RTX 2060
+
+CUDA Driver Version 13.0
+
+8 GB VRAM
+
+Fully operational GPU device
+
+No processes blocking compute mode
+
+This validates that the system is ready for GPU workloads.
+
+Screenshot:
+./screenshots/gpu_server_nvidia_smi.png
+
+Repository Structure (Visual Studio Code Overview)
+
+A complete overview of the folder architecture is included to visualize all modules:
+
+cuda/
+ocl/
+omp/
+openacc
+Timer utilities
+Build files and Makefiles
+Screenshot:
+./screenshots/project_structure.png
+
+8. Key Outcomes and Observations
+
+CUDA successfully compiled and executed on a local machine with NVIDIA drivers.
+OpenCL failed due to missing device support — expected behavior in non-GPU environments.
+OpenACC with GCC defaults to CPU execution; GPU backend requires NVHPC.
+OpenMP Offload also fell back to CPU, confirming missing NVPTX runtime support.
+GPU Server (RTX 2060) is fully operational and validated for CUDA/OpenACC/NVHPC execution.
+All steps—compilation, execution, errors, and performance readings—are documented with screenshots.
+The environment differences between local machine and GPU server demonstrate the importance of toolchain availability when performing real GPU computation.
+
+Note on Missing Files After Reset
+
+Due to an accidental git reset --hard operation performed during cleanup, several previously completed files and intermediate work were permanently removed from the working directory.
+This reset reverted the repository to an earlier state received from the remote branch, which means:
+
+local edits,
+
+additional screenshots,
+
+extended debugging notes,
+
+and earlier compiled executables
+
+were overwritten and are no longer recoverable.
+
+The content currently available in this branch represents the reconstructed version of the work based on what remained after the reset.
+All essential outputs, screenshots, and explanations have been re-added manually to ensure the assignment remains complete and verifiable.
