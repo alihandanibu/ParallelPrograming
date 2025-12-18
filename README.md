@@ -140,6 +140,12 @@ The output confirms that the job started successfully, ran on the
 Slurm with the message **CANCELLED DUE TO TIME LIMIT**. This provides
 direct evidence that Slurm enforces execution time limits at the job level.
 
+<img width="1282" height="999" alt="Screenshot from 2025-12-18 16-24-36" src="https://github.com/user-attachments/assets/0e268df9-7247-4f8b-a78c-249b209df1fe" />
+This screenshot shows the output file of another submitted job (`work_3.out`).
+The job starts successfully on the `itcenter-lab128` node using one processor
+and is later terminated by Slurm with the message **CANCELLED DUE TO TIME LIMIT**.
+This confirms that time limit enforcement is consistently applied across
+multiple job executions.
 
 Submitted jobs were automatically terminated when exceeding the specified
 time limit.
@@ -171,6 +177,81 @@ This comparison highlights the importance of workload managers such as Slurm
 in parallel and high-performance computing environments.
 
 ---
+## Overload Script Behavior With and Without Slurm
+
+When the `overload.sh` script is executed using Slurm (`sbatch`), the scheduler
+queues jobs and limits CPU usage according to available resources. This prevents
+the system from becoming unresponsive and ensures controlled execution.
+
+If the same overload workload is executed **without Slurm**, directly in two
+separate terminals using the maximum number of threads, all processes attempt
+to consume CPU resources simultaneously. This results in full CPU saturation,
+high load average, and significantly reduced system responsiveness.
+
+Although the workload itself is identical, the behavior differs significantly:
+- With Slurm: controlled scheduling, stable system
+- Without Slurm: uncontrolled CPU contention and system slowdown
+
+## salloc and Stress Test with Root Privileges
+<img width="1282" height="999" alt="Screenshot from 2025-12-18 16-31-38" src="https://github.com/user-attachments/assets/d1e60287-dd70-4aac-a3b4-9835972e096e" />
+An interactive Slurm allocation was requested using one node and one CPU
+with the `salloc -N 1 -n 1` command. Inside the allocation, the `stress`
+tool was executed using two CPU threads.
+
+The output confirms that the stress test was successfully dispatched
+(`dispatching hogs: 2 cpu`), increasing CPU usage while remaining under
+Slurm control. This demonstrates that Slurm allows controlled CPU
+utilization within an allocated job environment.
+
+An interactive Slurm allocation was requested using one node and one CPU:
+
+`salloc -N 1 -n 1`
+
+Inside the allocation, the `stress` tool was executed to test CPU usage.
+
+When running `stress --cpu 2`, CPU usage increased proportionally and remained
+within the allocated resources. The system remained stable and responsive.
+
+<img width="1282" height="999" alt="Screenshot from 2025-12-18 16-31-45" src="https://github.com/user-attachments/assets/48a8f5a9-3a4d-4880-aad2-b71892d377b1" />
+
+After allocating one node with one CPU using `salloc`, a stress test was
+executed using four CPU threads. The `top` output shows multiple `stress`
+processes consuming close to 100% CPU each.
+
+Although the workload exceeds the originally allocated resources, Slurm
+maintains control over execution and prevents the system from becoming
+unresponsive. This experiment demonstrates how Slurm handles resource
+contention and enforces scheduling policies even under high computational
+pressure.
+
+When running `stress --cpu 4`, CPU utilization increased significantly.
+However, Slurm maintained control over the workload, preventing uncontrolled
+resource usage and system instability.
+
+<img width="1282" height="999" alt="Screenshot from 2025-12-18 16-39-54" src="https://github.com/user-attachments/assets/fd5a9360-b1a6-4c50-a32c-9f1b4eb57141" />
+
+Even though Slurm allocated only one CPU thread via `salloc`, running
+`stress --cpu 4` shows higher CPU load across available hardware. Slurm’s
+scheduler enforces allocation rules at the scheduler level; actual OS-level
+threads can run concurrently, but the scheduler maintains order and prevents
+resource starvation. This highlights the difference between scheduler-level
+allocation and raw OS CPU usage.
+As shown in the top output, four stress processes are running simultaneously, each consuming a significant portion of CPU resources. The total CPU utilization approaches the physical limits of the machine.
+
+Since the system has 4 logical CPUs (as confirmed using lscpu), running stress --cpu 4 fully saturates all available CPU cores. This results in:
+
+Very high CPU usage
+
+Increased system load
+
+Reduced responsiveness for other user processes
+
+This experiment demonstrates that even when Slurm allocates limited resources, processes can still overload the system if they request more CPU threads than allocated. Slurm controls job scheduling, but does not automatically prevent CPU oversubscription unless cgroups or strict limits are enforced.
+
+These experiments demonstrate how Slurm enforces resource allocation limits
+and protects system stability even under high computational load.
+
+
 
 ## 11. Conclusion
 
@@ -178,6 +259,6 @@ This assignment demonstrates the successful installation, configuration, and
 testing of the Slurm Workload Manager on a single-node system. The experiments
 show how Slurm schedules jobs, allocates CPU resources, enforces execution
 limits, and maintains system stability. Slurm provides essential functionality
-for managing parallel workloads in both educational and production settings.
+for managing parallel workloads.
 
 ---
