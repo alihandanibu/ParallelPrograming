@@ -181,8 +181,3 @@ limits, and maintains system stability. Slurm provides essential functionality
 for managing parallel workloads in both educational and production settings.
 
 ---
-
-## 12. References
-
-- Slurm Documentation: https://slurm.schedmd.com/  
-- Linux Manual Pages: `man sbatch`, `man sinfo`, `man squeue`, `man top`
