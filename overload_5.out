@@ -1,0 +1,6 @@
+Job ID: 5
+Requested: 1 CPUs
+Running stress on 1 cores
+Started at Čet 18 Dec 2025 15:56:21 CET
+/var/spool/slurm/d/job00005/slurm_script: line 13: stress: command not found
+Finished at Čet 18 Dec 2025 15:56:21 CET
