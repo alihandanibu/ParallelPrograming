@@ -74,8 +74,7 @@ Write bandwidth: 226.62 MB/s
 real (wall): 109.85 s
 Screenshots:
 
-
-
+![Example 1 (Serial I/O) results — np=4 and np=8](02_ex1_serial_np4_np8.png)
 
 
 ## Example 2 — Version 2: MPI-IO INDEPENDENT
