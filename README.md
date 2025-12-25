@@ -4,8 +4,7 @@
 Topic: parallel file operations using MPI, comparing multiple approaches to reading/writing large data.
 Environment
 
-![CPU info (lscpu)](ParallelPrograming
-/01_cpu_info.png)
+![CPU info (lscpu)](/01_cpu_info.png)
 
 OS: WSL2 Ubuntu 24.0
 MPI: Open MPI
