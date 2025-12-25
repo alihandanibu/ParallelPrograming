@@ -1,0 +1,5 @@
+temperature_data.csv
+file_generator
+Example_*/ex*
+*.dat
+results/
