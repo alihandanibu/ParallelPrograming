@@ -1,6 +1,6 @@
-Assignment 11 (Week 12) — File operations for a parallel world (MPI-IO)
+#Assignment 11 (Week 12) — File operations for a parallel world (MPI-IO)
 
-This branch contains the Week 12 assignment for IT 2004 — Parallel Programming.
+##This branch contains the Week 12 assignment for IT 2004 — Parallel Programming.
 Topic: parallel file operations using MPI, comparing multiple approaches to reading/writing large data.
 Environment
 OS: WSL2 Ubuntu 24.0
@@ -50,7 +50,7 @@ If you get “not enough slots available”, use one of:
 --use-hwthread-cpus (recommended here)
 --oversubscribe (forces running more ranks than available slots)
 
-3) Results
+3)## Results
 All results below were measured using:
 /usr/bin/time -p
 MPI runs at np=4 and np=8 (--use-hwthread-cpus for 8)
@@ -75,7 +75,7 @@ Screenshots:
 
 
 
-Example 2 — Version 2: MPI-IO INDEPENDENT
+##Example 2 — Version 2: MPI-IO INDEPENDENT
 np=4
 Read time: 12.8813 s
 Compute time: 0.0246 s
@@ -95,7 +95,7 @@ Screenshots:
 
 
 
-Example 3 — Version 3: MPI-IO COLLECTIVE + HINTS
+##Example 3 — Version 3: MPI-IO COLLECTIVE + HINTS
 Hints used:
 collective_buffering=true
 aggregators=4
@@ -119,7 +119,7 @@ Screenshots:
 
 
 
-Example 4 — Version 4: MPI-IO WITH DATATYPES (HALO CELLS)
+##Example 4 — Version 4: MPI-IO WITH DATATYPES (HALO CELLS)
 Important note: in this example the Makefile produces version4 (not ex4).
 Run it as:
 /usr/bin/time -p mpirun -np 4 ./version4
