@@ -75,7 +75,7 @@ real (wall): 109.85 s
 Screenshots:
 
 ![Example 1 (Serial I/O) results — np=4 and np=8](02_ex1_serial_np4_np8.png)
-
+![Example 1 (Serial I/O) results — np=4 and np=8 (run 2)](images/02_ex1_serial_np4_np8_run2.png)
 
 ## Example 2 — Version 2: MPI-IO INDEPENDENT
 np=4
@@ -92,9 +92,11 @@ Write time: 8.3886 s
 Total time: 17.3360 s
 Write bandwidth: 40.93 MB/s
 real (wall): 20.05 
+
 Screenshots:
 
 ![Example 2 (MPI-IO Independent) results — np=4 and np=8](images/03_ex2_mpiio_independent_np4_np8.png)
+![Example 2 (MPI-IO Independent) results — np=4 and np=8 (run 2)](images/03_ex2_mpiio_independent_np4_np8_run2.png)
 
 
 ## Example 3 — Version 3: MPI-IO COLLECTIVE + HINTS
@@ -117,8 +119,11 @@ Write variance: 5.0994 s
 Total time: 15.0905 s
 Write bandwidth: 65.32 MB/s
 real (wall): 17.84 s
+
 Screenshots:
 
+![Example 3 (MPI-IO Collective + Hints) results — np=4 and np=8](images/04_ex3_mpiio_collective_hints_np4_np8.png)
+![Example 3 (MPI-IO Collective + Hints) results — np=4 and np=8 (run 2)](images/04_ex3_mpiio_collective_hints_np4_np8_run2.png)
 
 
 ## Example 4 — Version 4: MPI-IO WITH DATATYPES (HALO CELLS)
@@ -136,7 +141,10 @@ Write time: 0.1419 s
 Bandwidth: 0.17 MB/s
 real (wall): 0.63 s
 Verification OK (no halo values in output).
+
 Screenshots:
+![Example 4 (MPI datatypes + halo cells) output — np=4 and np=8](images/05_ex4_datatypes_halo_np4_np8.png)
+![Example 4 detail — verification + memory overhead](images/05b_ex4_verification_memory_overhead.png)
 
 
 
