@@ -94,7 +94,7 @@ Write bandwidth: 40.93 MB/s
 real (wall): 20.05 
 Screenshots:
 
-
+![Example 2 (MPI-IO Independent) results — np=4 and np=8](images/03_ex2_mpiio_independent_np4_np8.png)
 
 
 ## Example 3 — Version 3: MPI-IO COLLECTIVE + HINTS
